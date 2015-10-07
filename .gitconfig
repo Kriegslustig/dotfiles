@@ -1,0 +1,7 @@
+[user]
+	name = Kriegslustig
+	email = github@ls7.ch
+[push]
+	default = simple
+[core]
+	editor = /usr/bin/vim
