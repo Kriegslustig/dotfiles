@@ -120,7 +120,8 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 " Display line numbers
-" set nu
+set nu
+highlight LineNr ctermfg=grey
 " set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
