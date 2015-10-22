@@ -1,9 +1,9 @@
-dir = $(pwd)/
+dir=$(pwd)/
 cd ~
-ln -s -a ${dir}.vim
-ln -s ${dir}.vimrc
-ln -s ${dir}.tmux.conf
-ln -s ${dir}.tmux.local.local
-ln -s ${dir}.bashrc
-ln -s ${dir}.gitconfig
+ln -Fs -a ${dir}.vim
+ln -Fs ${dir}.vimrc
+ln -Fs ${dir}.tmux.conf
+ln -Fs ${dir}.tmux.local.local
+ln -Fs ${dir}.bashrc
+ln -Fs ${dir}.gitconfig
 
