@@ -9,6 +9,10 @@ execute pathogen#infect()
 
 source ~/.vim/dragvisuals.vim
 
+  let g:vim_markdown_folding_disabled=1
+
+command! -nargs=* Wrap set wrap linebreak nolist
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -150,7 +154,6 @@ set expandtab
 
 " Linebreak on 500 characters
 set lbr
-set tw=500
 
 set ai "Auto indent
 set si "Smart indent
@@ -159,6 +162,7 @@ set wrap "Wrap lines
 " Set Display some characters if there are trailing spaces or tabs
 set listchars=tab:~~,trail:-,nbsp:_
 set list
+set sbr=…
 
 func! DeleteTrailingWS()
   exe "normal mz"
