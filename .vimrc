@@ -16,10 +16,16 @@ command! -nargs=* Wrap set wrap linebreak nolist
 " Set to auto read when a file is changed from the outside
 set autoread
 
+set number
+set relativenumber
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -123,9 +129,7 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" Display line numbers
-set nu
-highlight LineNr ctermfg=grey
+highlight LineNr ctermfg=white
 " set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
