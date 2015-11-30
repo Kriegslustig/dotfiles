@@ -37,8 +37,8 @@ map <leader>bd :Bclose<cr>
 
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
-nnoremap J 10j
-nnoremap K 10k
+nnoremap J 10gj
+nnoremap K 10gk
 
 noremap <Space> :
 
@@ -130,6 +130,7 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 highlight LineNr ctermfg=white
+highlight CursorLine cterm=NONE ctermbg=235
 " set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
