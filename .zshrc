@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+# For a full list of active aliases, run alias.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -81,11 +81,9 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-
 ## CUSTOM ALIASES
 alias m=meteor
-alias meteor-create='project_name=`basename ${PWD}` && meteor create ${project_name} && mv ${project_name}/{*,.*} ./ 2>/dev/null && rmdir ${project_name}'
-
+alias meteor-create='project_name=basename ${PWD} && meteor create ${project_name} && mv ${project_name}/{*,.*} ./ 2>/dev/null && rmdir ${project_name}'
 
 export NVM_DIR="/Users/kriegslustig/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -94,4 +92,49 @@ export GOPATH=$HOME/Software/Go
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+
+export NODE_ENVIRONMENT="DEVELOPMENT"
+
+alias ll='ls -lah'
+
+export LANG=en_GB
+
+export EDITOR=vim
+
+
+function warp {
+  for bin in /usr/bin/warp /usr/local/bin/warp; do
+    if [ -f ${bin} ]; then
+      if [[ ${1} == "list" || ${1} == "add" ]]; then
+        ${bin} ${*}
+      else
+        result=$(${bin} ${1})
+        if [[ ${result} != "No warps found" ]]; then
+          cd $(${bin} ${1})
+        else
+          echo ${result}
+        fi
+      fi
+    fi
+  done
+}
+
+alias c='curl'
+
+alias dm='docker-machine'
+alias dme='eval $(dm env dev)'
+alias dmr='dm restart dev && dme'
+function docker-clean {
+  docker rm "$(docker ps -aq)"
+  docker rmi "$(docker images -q)"
+}
+alias docc='docker-compose'
+
+function update_tmux_name {
+  tmux rename-window "Dir: $(basename $(pwd))"
+}
+
+precmd_functions+=( update_tmux_name )
+
+#export PATH="/Users/kriegslustig/.rvm/gems/ruby-2.2.1/bin:/Users/kriegslustig/.rvm/gems/ruby-2.2.1@global/bin:/Users/kriegslustig/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:
 
