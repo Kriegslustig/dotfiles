@@ -244,6 +244,20 @@ if [[ "exec_on_servers" == $1 ]]; then
   exec_on_servers "${2}" "${3}"
 fi
 
+alias c='curl'
+
+alias dm='docker-machine'
+alias dme='eval $(dm env dev)'
+alias dmr='dm restart dev && dme'
+function docker-clean {
+  docker rm "$(docker ps -aq)"
+  docker rmi "$(docker images -q)"
+}
+alias docc='docker-compose'
+
+update_tmux_name () {
+  tmux rename-window "Dir: $(basename $(pwd))"
+}
 
 
 

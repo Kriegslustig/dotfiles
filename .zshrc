@@ -130,11 +130,5 @@ function docker-clean {
 }
 alias docc='docker-compose'
 
-function update_tmux_name {
-  tmux rename-window "Dir: $(basename $(pwd))"
-}
-
-precmd_functions+=( update_tmux_name )
-
 #export PATH="/Users/kriegslustig/.rvm/gems/ruby-2.2.1/bin:/Users/kriegslustig/.rvm/gems/ruby-2.2.1@global/bin:/Users/kriegslustig/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:
 
