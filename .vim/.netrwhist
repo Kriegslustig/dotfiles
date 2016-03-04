@@ -1,3 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/kriegslustig/Documents/Schule/Informatik/20151118 - UML/Notes'
+let g:netrw_dirhist_2='/Users/kriegslustig/Software/arbeit/ride-ride.ch/sites/all/modules/custom/ride_user_subscription_export'
+let g:netrw_dirhist_3='/Users/kriegslustig/Software/arbeit/drupal-test-instance/sites/all/modules/views'
+let g:netrw_dirhist_4='/Users/kriegslustig/.vim'
+let g:netrw_dirhist_5='/Users/kriegslustig/Software/arbeit/vita-surselva.ch/meetings'
+let g:netrw_dirhist_6='/Users/kriegslustig/TowerOwnCloud/IPA/disposition'
+let g:netrw_dirhist_7='/Users/kriegslustig/Software/elm/elm-pomodoro'
+let g:netrw_dirhist_8='/Users/kriegslustig/Software/nodejs/lucaschmid.net/server/bin'

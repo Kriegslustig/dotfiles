@@ -9,7 +9,7 @@ execute pathogen#infect()
 
 source ~/.vim/dragvisuals.vim
 
-  let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled=1
 
 command! -nargs=* Wrap set wrap linebreak nolist
 
@@ -24,7 +24,7 @@ set relativenumber
 let mapleader = ","
 let g:mapleader = ","
 
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<leader>l'
 let g:ctrlp_cmd = 'CtrlP'
 
 " Fast saving
@@ -37,8 +37,8 @@ map <leader>bd :Bclose<cr>
 
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
-nnoremap J 10gj
-nnoremap K 10gk
+nnoremap <C-j> 10gj
+nnoremap <C-k> 10gk
 
 noremap <Space> :
 
@@ -70,7 +70,7 @@ set so=7
 " set wildmenu
 
 " Ignore compiled files
-" set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*
 
 "Always show current position
 set ruler
@@ -121,6 +121,8 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
+au BufNewFile,BufRead *.tag setlocal ft=html
+
 colorscheme desert
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -130,8 +132,13 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 highlight LineNr ctermfg=white
-highlight CursorLine cterm=NONE ctermbg=235
 " set cursorline
+highlight CursorLine cterm=NONE ctermbg=235
+
+highlight SpellBad ctermbg=88
+highlight Search ctermbg=240
+highlight Search ctermbg=242
+highlight SpellLocal ctermbg=NONE ctermfg=248
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -209,5 +216,11 @@ function! <SID>BufcloseCloseIt()
   if buflisted(l:currentBufNum)
     execute("bdelete! ".l:currentBufNum)
   endif
+endfunction
+
+map <leader>u :call Fsucks()<cr>
+fu! Fsucks ()
+  w!
+  execute("!~/Software/nodejs/fsucks/index.js put ".bufname(''))
 endfunction
 
