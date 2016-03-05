@@ -122,13 +122,14 @@ function warp {
 alias c='curl'
 
 alias dm='docker-machine'
-alias dme='eval $(dm env dev)'
-alias dmr='dm restart dev && dme'
+alias dme='eval $(dm env)'
+alias dmr='dm restart && dme'
 function docker-clean {
   docker rm "$(docker ps -aq)"
   docker rmi "$(docker images -q)"
 }
 alias docc='docker-compose'
+alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 #export PATH="/Users/kriegslustig/.rvm/gems/ruby-2.2.1/bin:/Users/kriegslustig/.rvm/gems/ruby-2.2.1@global/bin:/Users/kriegslustig/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:
 
