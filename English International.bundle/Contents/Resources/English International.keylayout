@@ -2,7 +2,7 @@
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
 <!-- A Keyboard layout that eliminates most but not all deadkeys -->
 <!-- Created by Kriegslustig <github@ls7.ch> -->
-<keyboard group="0" id="2" name="UK International (Latin)" maxout="2">
+<keyboard group="0" id="666666" name="English International" maxout="2">
     <layouts>
         <layout first="0" last="0" modifiers="commonModifiers" mapSet="ANSI"/>
     </layouts>
@@ -1215,7 +1215,7 @@
             <when state="circumflex" output="ĉ"/>
         </action>
         <action id="comma">
-            <when state="none" next="cedilla"/>
+            <when state="none" output=","/>
         </action>
         <action id="e">
             <when state="none" output="e"/>
@@ -1283,10 +1283,10 @@
             <when state="tilde" output="õ"/>
         </action>
         <action id="quote">
-            <when state="none" next="acute"/>
+            <when state="none" output="'"/>
         </action>
         <action id="quote1">
-            <when state="none" next="acute"/>
+            <when state="none" output="'"/>
         </action>
         <action id="r">
             <when state="none" output="r"/>
