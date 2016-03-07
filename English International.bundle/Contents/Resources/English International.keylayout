@@ -1177,7 +1177,7 @@
             <when state="acute" output="Ź"/>
         </action>
         <action id="^">
-            <when state="none" next="3"/>
+            <when state="none" output="^"/>
         </action>
         <action id="^ 1">
             <when state="none" next="Circumflex"/>
