@@ -1,0 +1,48 @@
+[submodule "mattn/emmet-vim"]
+path = .vim/bundle/emmet-vim
+url = https://github.com/mattn/emmet-vim.git
+
+[submodule "kien/ctrlp.vim"]
+path = .vim/bundle/ctrlp.vim
+url = https://github.com/kien/ctrlp.vim.git
+
+[submodule "lambdatoast/elm.vim"]
+path = .vim/bundle/elm.vim
+url = https://github.com/lambdatoast/elm.vim.git
+
+[submodule "juvenn/mustache"]
+path = .vim/bundle/mustache
+url = https://github.com/juvenn/mustache.git
+
+[submodule "rust-lang/rust.vim"]
+path = .vim/bundle/rust.vim
+url = https://github.com/rust-lang/rust.vim.git
+
+[submodule "leafgarland/typescript-vim"]
+path = .vim/bundle/typescript-vim
+url = https://github.com/leafgarland/typescript-vim.git
+
+[submodule "vim-airline/vim-airline"]
+path = .vim/bundle/vim-airline
+url = https://github.com/vim-airline/vim-airline.git
+
+[submodule "pangloss/vim-javascript"]
+path = .vim/bundle/vim-javascript
+url = https://github.com/pangloss/vim-javascript.git
+
+[submodule "plasticboy/vim-markdown"]
+path = .vim/bundle/vim-markdown
+url = https://github.com/plasticboy/vim-markdown.git
+
+[submodule "zivtech/vim-drupal"]
+path = .vim/bundle/vim-drupal
+url = https://github.com/zivtech/vim-drupal.git
+
+[submodule "wojtekmach/vim-rename"]
+path = .vim/bundle/vim-rename
+url = https://github.com/wojtekmach/vim-rename.git
+
+[submodule "caiogondim/maglev"]
+path = maglev
+url = https://github.com/caiogondim/maglev
+
