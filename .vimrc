@@ -45,10 +45,10 @@ noremap <Space> :
 nnoremap <esc> :noh<return><esc>
 
 " Moving whole blocks and lines around using dragvisuals.vim
-map <expr> <Left> DVB_Drag('Left')
-map <expr> <Right> DVB_Drag('Right')
-map <expr> <Up> DVB_Drag('Up')
-map <expr> <Down> DVB_Drag('Down')
+vmap <expr> <Left> DVB_Drag('Left')
+vmap <expr> <Right> DVB_Drag('Right')
+vmap <expr> <Up> DVB_Drag('Up')
+vmap <expr> <Down> DVB_Drag('Down')
 
 " Bells
 set novisualbell
@@ -67,10 +67,10 @@ nmap <leader>r :redo<cr>
 set so=7
 
 " Turn on the WiLd menu
-" set wildmenu
+set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*
+set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*,*/default/config_*
 
 "Always show current position
 set ruler
@@ -88,14 +88,14 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
-
-" Highlight search results
-set hlsearch
 
 " Makes search act like search in modern browsers
 set incsearch
+
+" Highlight search results
+set hls
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -105,6 +105,7 @@ set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -120,10 +121,22 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['standard']
+
+let g:airline#extensions#syntastic#enabled = 0
 
 au BufNewFile,BufRead *.tag setlocal ft=html
 
-colorscheme desert
+" colorscheme desert
+colo nofrils-dark
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -132,8 +145,10 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 highlight LineNr ctermfg=white
-" set cursorline
-highlight CursorLine cterm=NONE ctermbg=235
+highlight CursorLineNr ctermbg=235 ctermfg=white
+
+set cursorline
+highlight CursorLine cterm=NONE ctermbg=235 ctermfg=white
 
 highlight SpellBad ctermbg=88
 highlight Search ctermbg=240
@@ -147,8 +162,6 @@ highlight SpellLocal ctermbg=NONE ctermfg=248
 set nobackup
 set nowb
 set noswapfile
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -181,6 +194,7 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
+
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 

@@ -181,9 +181,9 @@
             <key code="17" action="T"/>
             <key code="18" output="!"/>
             <key code="19" output="@"/>
-            <key code="20" output="&#x00a3;"/>
+            <key code="20" output="#"/>
             <key code="21" output="$"/>
-            <key code="22" action="^ 3"/>
+            <key code="22" output="^"/>
             <key code="23" output="%"/>
             <key code="24" output="+"/>
             <key code="25" output="("/>
@@ -431,7 +431,7 @@
             <key code="31" output="&#x00f8;"/>
             <key code="32" action="&#x00a8;"/>
             <key code="33" output="&#x201c;"/>
-            <key code="34" action="^"/>
+            <key code="34" output="^"/>
             <key code="35" output="&#x03c0;"/>
             <key code="36" output="&#x000d;"/>
             <key code="37" output="&#x00ac;"/>
