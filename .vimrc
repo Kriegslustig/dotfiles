@@ -115,6 +115,9 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" Clipboard
+set clipboard=unnamed
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts

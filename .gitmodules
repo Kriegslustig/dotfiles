@@ -47,5 +47,18 @@ path = maglev
 url = https://github.com/caiogondim/maglev
 
 [submodule ".vim/bundle/vim-pug"]
-	path = .vim/bundle/vim-pug
-	url = https://github.com/digitaltoad/vim-pug.git
+  path = .vim/bundle/vim-pug
+  url = https://github.com/digitaltoad/vim-pug.git
+
+[submodule ".vim/bundle/vim-twig"]
+  path = .vim/bundle/vim-twig
+  url = https://github.com/evidens/vim-twig.git
+
+[submodule ".vim/bundle/nofrils"]
+  path = .vim/bundle/nofrils
+  url = https://github.com/robertmeta/nofrils.git
+
+[submodule ".vim/bundle/syntastic"]
+  path = .vim/bundle/syntastic
+  url = https://github.com/scrooloose/syntastic.git
+
