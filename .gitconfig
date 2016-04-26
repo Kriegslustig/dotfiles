@@ -1,6 +1,7 @@
 [user]
 	name = Kriegslustig
-	email = github@ls7.ch
+	email = kriegslustig@kriegslustig.me
+	signingkey = A74C4E96
 [push]
 	default = simple
 [core]

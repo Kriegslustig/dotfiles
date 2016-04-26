@@ -62,3 +62,9 @@ url = https://github.com/caiogondim/maglev
   path = .vim/bundle/syntastic
   url = https://github.com/scrooloose/syntastic.git
 
+[submodule ".vim/vim-elixir"]
+	path = .vim/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule ".vim/bundle/php.vim"]
+	path = .vim/bundle/php.vim
+	url = https://github.com/StanAngeloff/php.vim.git

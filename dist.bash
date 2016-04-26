@@ -6,4 +6,5 @@ ln -fs ${dir}.vimrc
 ln -fs ${dir}old.tmux.conf .tmux.conf
 ln -fs ${dir}.bashrc
 ln -fs ${dir}.gitconfig
+ln -fs ${dir}/English\ International.bundle Library/Keyboard\ Layouts/
 

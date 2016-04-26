@@ -70,7 +70,7 @@ set so=7
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*,*/default/config_*
+set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*,*/default/config_*,*/deps/*
 
 "Always show current position
 set ruler
@@ -140,6 +140,8 @@ au BufNewFile,BufRead *.tag setlocal ft=html
 
 " colorscheme desert
 colo nofrils-dark
+" colo nofrils-light
+highlight LineNr ctermfg=grey
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -147,11 +149,10 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-highlight LineNr ctermfg=white
-highlight CursorLineNr ctermbg=235 ctermfg=white
+highlight CursorLineNr ctermbg=237 ctermfg=white
 
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=235 ctermfg=white
+" highlight CursorLine cterm=NONE ctermbg=237 ctermfg=white
 
 highlight SpellBad ctermbg=88
 highlight Search ctermbg=240
@@ -240,4 +241,10 @@ fu! Fsucks ()
   w!
   execute("!~/Software/nodejs/fsucks/index.js put ".bufname(''))
 endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let @d = 'ko*/jkhi jkko *jkko/**jk0jA jk'
+"let @D = '1@djjf(lywkkA@pa€kb€kbarg jkpA jkbi{} jkAjkO€kb€kb* €kb€kb * jkjo* #€kb€kb @returns {}jkkk'
 
