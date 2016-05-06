@@ -40,6 +40,10 @@ map <leader>p :bp<cr>
 nnoremap <C-j> 10gj
 nnoremap <C-k> 10gk
 
+" Tabs
+nmap <C-t>n :tabn<cr>
+nmap <C-t>p :tabp<cr>
+
 noremap <Space> :
 
 nnoremap <esc> :noh<return><esc>
@@ -139,8 +143,10 @@ let g:airline#extensions#syntastic#enabled = 0
 au BufNewFile,BufRead *.tag setlocal ft=html
 
 " colorscheme desert
-colo nofrils-dark
-" colo nofrils-light
+" colo nofrils-dark
+" highlight CursorLineNr ctermbg=237 ctermfg=white
+colo nofrils-light
+"
 highlight LineNr ctermfg=grey
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -148,8 +154,6 @@ set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-
-highlight CursorLineNr ctermbg=237 ctermfg=white
 
 set cursorline
 " highlight CursorLine cterm=NONE ctermbg=237 ctermfg=white
@@ -236,7 +240,7 @@ function! <SID>BufcloseCloseIt()
   endif
 endfunction
 
-map <leader>u :call Fsucks()<cr>
+map <leader>u :call Fsucks()<cr><cr>
 fu! Fsucks ()
   w!
   execute("!~/Software/nodejs/fsucks/index.js put ".bufname(''))

@@ -68,3 +68,6 @@ url = https://github.com/caiogondim/maglev
 [submodule ".vim/bundle/php.vim"]
 	path = .vim/bundle/php.vim
 	url = https://github.com/StanAngeloff/php.vim.git
+[submodule ".vim/bundle/yats"]
+	path = .vim/bundle/yats
+	url = https://github.com/HerringtonDarkholme/yats.vim.git
