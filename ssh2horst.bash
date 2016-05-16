@@ -1,7 +1,13 @@
 #!/bin/bash
 
-trap "networksetup -switchtolocation Automatic && exit" SIGINT SIGTERM
+ssh -N -D 6666 mail.kriegslustig.me &
+ssh_pid=$!
+
+sleep 2
 
 networksetup -switchtolocation horst
-ssh -N -D 3000 mail.kriegslustig.me
+
+trap "networksetup -switchtolocation Automatic && kill ${ssh_pid} && exit" SIGINT SIGTERM
+
+wait ${ssh_pid}
 
