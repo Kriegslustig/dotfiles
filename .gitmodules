@@ -71,3 +71,6 @@ url = https://github.com/caiogondim/maglev
 [submodule ".vim/bundle/yats"]
 	path = .vim/bundle/yats
 	url = https://github.com/HerringtonDarkholme/yats.vim.git
+[submodule ".vim/bundle/vim-indent-guides"]
+	path = .vim/bundle/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
