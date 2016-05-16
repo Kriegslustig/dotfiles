@@ -45,6 +45,7 @@ nmap <C-t>n :tabn<cr>
 nmap <C-t>p :tabp<cr>
 
 noremap <Space> :
+noremap / :/\v
 
 nnoremap <esc> :noh<return><esc>
 
@@ -140,13 +141,25 @@ let g:syntastic_javascript_checkers = ['standard']
 
 let g:airline#extensions#syntastic#enabled = 0
 
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 1
+
 au BufNewFile,BufRead *.tag setlocal ft=html
 
-" colorscheme desert
-" colo nofrils-dark
-" highlight CursorLineNr ctermbg=237 ctermfg=white
-colo nofrils-light
-"
+" let currentcolorscheme = "light"
+let currentcolorscheme = "dark"
+
+if currentcolorscheme == "light"
+  colo nofrils-light
+  hi IndentGuidesOdd  ctermbg=255
+  hi IndentGuidesEven ctermbg=256
+else
+  colo nofrils-dark
+  highlight CursorLineNr ctermbg=237 ctermfg=white
+  hi IndentGuidesOdd  ctermbg=235
+  hi IndentGuidesEven ctermbg=236
+endif
+
 highlight LineNr ctermfg=grey
 
 " Set utf8 as standard encoding and en_US as the standard language
