@@ -259,5 +259,5 @@ update_tmux_name () {
   tmux rename-window "Dir: $(basename $(pwd))"
 }
 
-
+alias ssh2horst="~/Software/Others/dotfiles/ssh2horst.bash"
 

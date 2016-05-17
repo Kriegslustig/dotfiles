@@ -133,3 +133,5 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 #export PATH="/Users/kriegslustig/.rvm/gems/ruby-2.2.1/bin:/Users/kriegslustig/.rvm/gems/ruby-2.2.1@global/bin:/Users/kriegslustig/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:
 
+alias ssh2horst="~/Software/Others/dotfiles/ssh2horst.bash"
+
