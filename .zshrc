@@ -135,3 +135,7 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 alias ssh2horst="~/Software/Others/dotfiles/ssh2horst.bash"
 
+sbb () {
+  open "http://fahrplan.sbb.ch/bin/query.exe/dn?S=${1}&Z=${2}"
+}
+
