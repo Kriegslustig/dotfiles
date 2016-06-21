@@ -31,6 +31,7 @@ let g:ctrlp_cmd = 'CtrlP'
 nmap <leader>w :w!<cr>
 nmap <leader>q :w<cr>
 inoremap jk <ESC>
+inoremap Jk <ESC>
 
 " Close a buffer with ,bd
 map <leader>bd :Bclose<cr>
@@ -45,7 +46,7 @@ nmap <C-t>n :tabn<cr>
 nmap <C-t>p :tabp<cr>
 
 noremap <Space> :
-noremap / :/\v
+noremap / /\v
 
 nnoremap <esc> :noh<return><esc>
 
@@ -75,7 +76,7 @@ set so=7
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*,*/default/config_*,*/deps/*
+set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*,*/default/config_*,*/deps/*,*/dist/*
 
 "Always show current position
 set ruler
@@ -146,24 +147,25 @@ let g:indent_guides_start_level = 1
 
 au BufNewFile,BufRead *.tag setlocal ft=html
 
-" let currentcolorscheme = "light"
-let currentcolorscheme = "dark"
-
-if currentcolorscheme == "light"
+command! Lights call Lights()
+function! Lights ()
   colo nofrils-light
   hi IndentGuidesOdd  ctermbg=255
   hi IndentGuidesEven ctermbg=256
-else
+endfunction
+
+command! Dark call Dark()
+function! Dark ()
   colo nofrils-dark
   highlight CursorLineNr ctermbg=237 ctermfg=white
   hi IndentGuidesOdd  ctermbg=235
   hi IndentGuidesEven ctermbg=236
-endif
+endfunction
+
+" Lights
+Dark
 
 highlight LineNr ctermfg=grey
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -207,6 +209,8 @@ set wrap "Wrap lines
 
 " Set Display some characters if there are trailing spaces or tabs
 set listchars=tab:~~,trail:-,nbsp:_
+au BufRead,BufNewFile *.otl set listchars=tab:\ \ 
+
 set list
 set sbr=â€¦
 
@@ -231,6 +235,10 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Custom functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
@@ -259,8 +267,19 @@ fu! Fsucks ()
   execute("!~/Software/nodejs/fsucks/index.js put ".bufname(''))
 endfunction
 
+command! Present call Present()
+function! Present ()
+  execute("set nonumber")
+  execute("set norelativenumber")
+endfunction
+command! NoPresent call NoPresent()
+function! NoPresent ()
+  execute("set number")
+  execute("set relativenumber")
+endfunction
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
+" => Macros
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let @d = 'ko*/jkhi jkko *jkko/**jk0jA jk'
 "let @D = '1@djjf(lywkkA@pa€kb€kbarg jkpA jkbi{} jkAjkO€kb€kb* €kb€kb * jkjo* #€kb€kb @returns {}jkkk'
