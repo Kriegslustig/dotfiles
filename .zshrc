@@ -139,3 +139,5 @@ sbb () {
   open "http://fahrplan.sbb.ch/bin/query.exe/dn?S=${1}&Z=${2}"
 }
 
+ npmi () { local A;npm info ${1} | less;echo "?";read A;if [ -n $A ];then npm i ${@};fi } # Safer npm install. #nodejs; npmi [package] [flags]
+
