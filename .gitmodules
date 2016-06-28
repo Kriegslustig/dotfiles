@@ -38,10 +38,6 @@ url = https://github.com/zivtech/vim-drupal.git
 path = .vim/bundle/vim-rename
 url = https://github.com/wojtekmach/vim-rename.git
 
-[submodule "caiogondim/maglev"]
-path = maglev
-url = https://github.com/caiogondim/maglev
-
 [submodule ".vim/bundle/vim-pug"]
   path = .vim/bundle/vim-pug
   url = https://github.com/digitaltoad/vim-pug.git
