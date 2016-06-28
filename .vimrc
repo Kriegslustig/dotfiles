@@ -60,6 +60,11 @@ vmap <expr> <Down> DVB_Drag('Down')
 set novisualbell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Pugin specific
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:javascript_plugin_jsdoc = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key maps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -158,14 +163,13 @@ command! Dark call Dark()
 function! Dark ()
   colo nofrils-dark
   highlight CursorLineNr ctermbg=237 ctermfg=white
+  highlight LineNr ctermfg=grey
   hi IndentGuidesOdd  ctermbg=235
   hi IndentGuidesEven ctermbg=236
 endfunction
 
 " Lights
 Dark
-
-highlight LineNr ctermfg=grey
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -204,7 +208,7 @@ set expandtab
 set lbr
 
 set ai "Auto indent
-set si "Smart indent
+set si
 set wrap "Wrap lines
 
 " Set Display some characters if there are trailing spaces or tabs
