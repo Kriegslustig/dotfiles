@@ -26,10 +26,6 @@ url = https://github.com/leafgarland/typescript-vim.git
 path = .vim/bundle/vim-airline
 url = https://github.com/vim-airline/vim-airline.git
 
-[submodule "pangloss/vim-javascript"]
-path = .vim/bundle/vim-javascript
-url = https://github.com/pangloss/vim-javascript.git
-
 [submodule "plasticboy/vim-markdown"]
 path = .vim/bundle/vim-markdown
 url = https://github.com/plasticboy/vim-markdown.git
@@ -41,10 +37,6 @@ url = https://github.com/zivtech/vim-drupal.git
 [submodule "wojtekmach/vim-rename"]
 path = .vim/bundle/vim-rename
 url = https://github.com/wojtekmach/vim-rename.git
-
-[submodule "caiogondim/maglev"]
-path = maglev
-url = https://github.com/caiogondim/maglev
 
 [submodule ".vim/bundle/vim-pug"]
   path = .vim/bundle/vim-pug
@@ -77,3 +69,9 @@ url = https://github.com/caiogondim/maglev
 [submodule ".vim/bundle/vimoutliner"]
 	path = .vim/bundle/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
+[submodule ".vim/bundle/vim-javascript"]
+	path = .vim/bundle/vim-javascript
+	url = https://github.com/Kriegslustig/vim-javascript.git
+[submodule ".vim/bundle/vim-unimpaired"]
+	path = .vim/bundle/vim-unimpaired
+	url = git@github.com:tpope/vim-unimpaired.git
