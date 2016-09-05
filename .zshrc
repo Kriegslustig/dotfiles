@@ -50,6 +50,7 @@ plugins=(git tmux wd)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH=$PATH:/usr/local/m-cli
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -82,7 +83,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 ## CUSTOM ALIASES
-alias m=meteor
 alias meteor-create='project_name=basename ${PWD} && meteor create ${project_name} && mv ${project_name}/{*,.*} ./ 2>/dev/null && rmdir ${project_name}'
 
 export NVM_DIR="/Users/kriegslustig/.nvm"
@@ -139,5 +139,16 @@ sbb () {
   open "http://fahrplan.sbb.ch/bin/query.exe/dn?S=${1}&Z=${2}"
 }
 
- npmi () { local A;npm info ${1} | less;echo "?";read A;if [ -n $A ];then npm i ${@};fi } # Safer npm install. #nodejs; npmi [package] [flags]
+npmi () {
+  local packagename=$(echo ${@} | sed -E 's/(\-+[a-zA-Z0-9]+| )//g')
+  local opt
+  npm info ${packagename} | less
+  echo "Is it the right package? (y/n)"
+  read opt
+  if [[ "${opt}" == "y" ]]; then
+    npm i ${@}
+  fi
+}
+
+alias prettyjson='python -m json.tool'
 
