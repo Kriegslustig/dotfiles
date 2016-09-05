@@ -45,6 +45,9 @@ map <leader>p :bp<cr>
 nnoremap <C-j> 10gj
 nnoremap <C-k> 10gk
 
+" dash lookup
+nmap <leader>d :Dash<cr>
+
 " Tabs
 nmap <C-t>n :tabn<cr>
 nmap <C-t>p :tabp<cr>
