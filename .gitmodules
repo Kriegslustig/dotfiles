@@ -72,3 +72,6 @@ url = https://github.com/wojtekmach/vim-rename.git
 [submodule ".vim/bundle/vim-javascript"]
 	path = .vim/bundle/vim-javascript
 	url = https://github.com/Kriegslustig/vim-javascript.git
+[submodule ".vim/bundle/vim-unimpaired"]
+	path = .vim/bundle/vim-unimpaired
+	url = git@github.com:tpope/vim-unimpaired.git
