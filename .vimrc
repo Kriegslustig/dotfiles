@@ -63,6 +63,12 @@ vmap <expr> <Right> DVB_Drag('Right')
 vmap <expr> <Up> DVB_Drag('Up')
 vmap <expr> <Down> DVB_Drag('Down')
 
+" splits
+nmap <silent> <C-w>l :wincmd l<cr>:wincmd _<cr>
+nmap <silent> <C-w>k :wincmd k<cr>:wincmd _<cr>
+nmap <silent> <C-w>j :wincmd j<cr>:wincmd _<cr>
+nmap <silent> <C-w>h :wincmd h<cr>:wincmd _<cr>
+
 " Bells
 set novisualbell
 
@@ -196,7 +202,7 @@ let g:airline#extensions#syntastic#enabled = 0
 " Local linter sypport
 let g:syntastic_javascript_checkers = []
 
-function CheckJavaScriptLinter(filepath, linter)
+function! CheckJavaScriptLinter(filepath, linter)
   if exists('b:syntastic_checkers')
     return
   endif
@@ -206,7 +212,7 @@ function CheckJavaScriptLinter(filepath, linter)
   endif
 endfunction
 
-function SetupJavaScriptLinter()
+function! SetupJavaScriptLinter()
   let l:current_folder = expand('%:p:h')
   let l:bin_folder = fnamemodify(syntastic#util#findFileInParent('package.json', l:current_folder), ':h')
   let l:bin_folder = l:bin_folder . '/node_modules/.bin/'
@@ -348,6 +354,7 @@ command! PrettyXML call DoPrettyXML()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Macros
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap m 1@
 let @d = 'ko*/jkhi jkko *jkko/**jk0jA jk'
-"let @D = '1@djjf(lywkkA@pa€kb€kbarg jkpA jkbi{} jkAjkO€kb€kb* €kb€kb * jkjo* #€kb€kb @returns {}jkkk'
+let @c = 'iconsole.log(jkea)jk'
 
