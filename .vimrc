@@ -69,6 +69,12 @@ nmap <silent> <C-w>k :wincmd k<cr>:wincmd _<cr>
 nmap <silent> <C-w>j :wincmd j<cr>:wincmd _<cr>
 nmap <silent> <C-w>h :wincmd h<cr>:wincmd _<cr>
 
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" MBE
+map <silent> <leader>m :MBEFocus<cr>
+
 " Bells
 set novisualbell
 
@@ -149,6 +155,8 @@ set clipboard=unnamed
 " Enable syntax highlighting
 syntax enable
 
+" Indent guides
+let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 1
 
