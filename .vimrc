@@ -23,6 +23,18 @@ set autoread
 set number
 set relativenumber
 
+" Bells
+set novisualbell
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Pugin specific
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:javascript_plugin_jsdoc = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Key maps
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -48,6 +60,9 @@ nnoremap <C-k> 10gk
 " dash lookup
 nmap <leader>d :Dash<cr>
 
+" Replace word with buffer
+map <leader>r "_dw"*P
+
 " Tabs
 nmap <C-t>n :tabn<cr>
 nmap <C-t>p :tabp<cr>
@@ -69,25 +84,14 @@ nmap <silent> <C-w>k :wincmd k<cr>:wincmd _<cr>
 nmap <silent> <C-w>j :wincmd j<cr>:wincmd _<cr>
 nmap <silent> <C-w>h :wincmd h<cr>:wincmd _<cr>
 
+" CtrlP
+nmap <leader>j :CtrlPBuffer<cr>
+
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
 " MBE
 map <silent> <leader>m :MBEFocus<cr>
-
-" Bells
-set novisualbell
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Pugin specific
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:javascript_plugin_jsdoc = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Key maps
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nmap <leader>r :redo<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
