@@ -160,7 +160,7 @@ set clipboard=unnamed
 syntax enable
 
 " Indent guides
-let g:indent_guides_enable_on_vim_startup = 0
+let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 1
 
@@ -182,9 +182,6 @@ function! Dark ()
   hi IndentGuidesEven ctermbg=236
 endfunction
 
-" Lights
-Dark
-
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -195,6 +192,9 @@ highlight SpellBad ctermbg=88
 highlight Search ctermbg=240
 highlight Search ctermbg=242
 highlight SpellLocal ctermbg=NONE ctermfg=248
+
+" Lights
+Dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic
