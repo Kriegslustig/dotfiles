@@ -150,6 +150,10 @@ npmi () {
   fi
 }
 
+npmr () {
+  npm run --silent ${@}
+}
+
 alias prettyjson='python -m json.tool'
 
 function mov2gif {
