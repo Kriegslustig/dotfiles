@@ -1,3 +1,6 @@
+set shell=/bin/bash
+let g:python_host_skip_check = 1
+
 " Allow secure project specific configuration
 set exrc
 set secure
@@ -13,15 +16,12 @@ execute pathogen#infect()
 
 source ~/.vim/dragvisuals.vim
 
-let g:vim_markdown_folding_disabled=1
-
 command! -nargs=* Wrap set wrap linebreak nolist
 
 " Set to auto read when a file is changed from the outside
 set autoread
 
 set number
-set relativenumber
 
 " Bells
 set novisualbell
@@ -31,21 +31,30 @@ set novisualbell
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:javascript_plugin_jsdoc = 1
 
+" Disable flow by default
+let g:flow#enable = 0
+
+" expand_region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+let g:deoplete#enable_at_startup = 1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key maps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 let g:ctrlp_map = '<leader>l'
 let g:ctrlp_cmd = 'CtrlP'
 
 " Fast saving
 nmap <leader>w :w!<cr>
-nmap <leader>q :w<cr>
+nmap <leader>q :wq<cr>
 inoremap jk <ESC>
 inoremap Jk <ESC>
 
@@ -56,6 +65,9 @@ map <leader>n :bn<cr>
 map <leader>p :bp<cr>
 nnoremap <C-j> 10gj
 nnoremap <C-k> 10gk
+
+map <leader>e :e<Space>
+map <leader>s :vsp<cr>
 
 " dash lookup
 nmap <leader>d :Dash<cr>
@@ -78,21 +90,11 @@ vmap <expr> <Right> DVB_Drag('Right')
 vmap <expr> <Up> DVB_Drag('Up')
 vmap <expr> <Down> DVB_Drag('Down')
 
-" splits
-nmap <silent> <C-w>l :wincmd l<cr>:wincmd _<cr>
-nmap <silent> <C-w>k :wincmd k<cr>:wincmd _<cr>
-nmap <silent> <C-w>j :wincmd j<cr>:wincmd _<cr>
-nmap <silent> <C-w>h :wincmd h<cr>:wincmd _<cr>
-
 " CtrlP
 nmap <leader>j :CtrlPBuffer<cr>
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-
-" MBE
-map <silent> <leader>m :MBEFocus<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -100,11 +102,11 @@ map <silent> <leader>m :MBEFocus<cr>
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-" Turn on the WiLd menu
+" Turn on the wild menu
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*,*/default/config_*,*/deps/*,*/dist/*,*/typings/*
+set wildignore=*.o,*~,*.pyc,*/node_modules/*,*/elm-stuff/*,*/vendor/*,*/default/config_*,*/deps/*,*/dist/*,*/typings/*,*/flow-typed/*
 
 "Always show current position
 set ruler
@@ -118,6 +120,11 @@ set hid
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
+
+" Fancy search selection
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
 
 " Ignore case when searching
 set ignorecase
@@ -157,7 +164,7 @@ set clipboard=unnamed
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable
+syntax on
 
 " Indent guides
 let g:indent_guides_enable_on_vim_startup = 1
@@ -170,13 +177,12 @@ command! Lights call Lights()
 function! Lights ()
   colo nofrils-light
   hi IndentGuidesOdd  ctermbg=255
-  hi IndentGuidesEven ctermbg=256
+  hi IndentGuidesEven ctermbg=254
 endfunction
 
 command! Dark call Dark()
 function! Dark ()
   colo nofrils-dark
-  highlight CursorLineNr ctermbg=237 ctermfg=white
   highlight LineNr ctermfg=grey
   hi IndentGuidesOdd  ctermbg=235
   hi IndentGuidesEven ctermbg=236
@@ -185,16 +191,10 @@ endfunction
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-set cursorline
-" highlight CursorLine cterm=NONE ctermbg=237 ctermfg=white
-
 highlight SpellBad ctermbg=88
 highlight Search ctermbg=240
 highlight Search ctermbg=242
 highlight SpellLocal ctermbg=NONE ctermfg=248
-
-" Lights
-Dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic
@@ -203,11 +203,15 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_highlighting = 1
+" Disable annotations next to column numbers (slow)
+let g:syntastic_enable_signs = 0
+let g:syntastic_cursor_columns = 0
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
 let g:airline#extensions#syntastic#enabled = 0
 
@@ -326,12 +330,10 @@ endfunction
 command! Present call Present()
 function! Present ()
   execute("set nonumber")
-  execute("set norelativenumber")
 endfunction
 command! NoPresent call NoPresent()
 function! NoPresent ()
   execute("set number")
-  execute("set relativenumber")
 endfunction
 
 function! DoPrettyXML()

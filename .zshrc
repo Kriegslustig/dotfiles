@@ -140,7 +140,7 @@ sbb () {
 }
 
 npmi () {
-  local packagename=$(echo ${@} | sed -E 's/(\-+[a-zA-Z0-9]+| )//g')
+  local packagename=$(echo ${@} | sed -E 's/(\ \-+[a-zA-Z0-9]+| )//g')
   local opt
   npm info ${packagename} | less
   echo "Is it the right package? (y/n)"
@@ -160,3 +160,19 @@ function mov2gif {
   ffmpeg -i ${1} -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3
 }
 
+if which thefuck 1>/dev/null; then
+  eval "$(thefuck --alias)"
+fi
+
+if [ -f ~/.zshrc_secret ]; then
+  source ~/.zshrc_secret
+fi
+
+eval "$(jump shell zsh)"
+
+merge-branch () {
+  git merge --no-ff ${1} && \
+  git push && \
+  git branch -d ${1} && \
+  git push --delete origin ${1}
+}

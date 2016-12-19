@@ -92,3 +92,21 @@ url = https://github.com/wojtekmach/vim-rename.git
 [submodule ".vim/bundle/minibufexpl.vim"]
 	path = .vim/bundle/minibufexpl.vim
 	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule ".vim/bundle/vim-flow"]
+	path = .vim/bundle/vim-flow
+	url = https://github.com/flowtype/vim-flow.git
+[submodule ".vim/bundle/vim-expand-region"]
+	path = .vim/bundle/vim-expand-region
+	url = https://github.com/terryma/vim-expand-region.git
+[submodule ".vim/bundle/tern_for_vim"]
+	path = .vim/bundle/tern_for_vim
+	url = https://github.com/ternjs/tern_for_vim.git
+[submodule ".vim/bundle/neocomplete"]
+	path = .vim/bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule ".vim/bundle/deoplete"]
+	path = .vim/bundle/deoplete
+	url = https://github.com/Shougo/deoplete.nvim.git
+[submodule ".vim/bundle/deoplete-ternjs"]
+	path = .vim/bundle/deoplete-ternjs
+	url = https://github.com/carlitux/deoplete-ternjs.git
