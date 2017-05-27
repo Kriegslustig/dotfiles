@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
+export VIM=/usr/local/bin/nvim
+export VIMRUNTIME=/usr/local/share/nvim/runtime
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -133,7 +136,7 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 #export PATH="/Users/kriegslustig/.rvm/gems/ruby-2.2.1/bin:/Users/kriegslustig/.rvm/gems/ruby-2.2.1@global/bin:/Users/kriegslustig/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:
 
-alias ssh2horst="~/Software/Others/dotfiles/ssh2horst.bash"
+alias ssh2horst="~/dotfiles/ssh2horst.bash"
 
 sbb () {
   open "http://fahrplan.sbb.ch/bin/query.exe/dn?S=${1}&Z=${2}"
@@ -176,3 +179,13 @@ merge-branch () {
   git branch -d ${1} && \
   git push --delete origin ${1}
 }
+
+open-node-project () {
+  PROJECT_DIR="$(pwd)"
+  tmux new-window -c ${PROJECT_DIR} -t default
+  tmux split-window -t 'default:{end}' -h -p 50 -c ${PROJECT_DIR}
+  tmux split-window -t 'default:{end}' -h -p 50 -c ${PROJECT_DIR}
+  tmux new-window -c ${PROJECT_DIR} -t default 'reattach-to-user-namespace -l /bin/zsh; nvim'
+}
+
+alias prettyJson=node -e 'process.stdin.on("data", (d) => console.log(JSON.stringify(JSON.parse(d.toString()), null, "  ")))'

@@ -14,8 +14,6 @@ filetype indent on
 
 execute pathogen#infect()
 
-source ~/.vim/dragvisuals.vim
-
 command! -nargs=* Wrap set wrap linebreak nolist
 
 " Set to auto read when a file is changed from the outside
