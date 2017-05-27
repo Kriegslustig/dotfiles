@@ -110,3 +110,18 @@ url = https://github.com/wojtekmach/vim-rename.git
 [submodule ".vim/bundle/deoplete-ternjs"]
 	path = .vim/bundle/deoplete-ternjs
 	url = https://github.com/carlitux/deoplete-ternjs.git
+[submodule ".vim/bundle/neoinclude"]
+	path = .vim/bundle/neoinclude
+	url = https://github.com/Shougo/neoinclude.vim.git
+[submodule ".vim/bundle/vim-disapprove-deep-indentation"]
+	path = .vim/bundle/vim-disapprove-deep-indentation
+	url = https://github.com/dodie/vim-disapprove-deep-indentation.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/undotree"]
+	path = .vim/bundle/undotree
+	url = https://github.com/mbbill/undotree.git
+[submodule ".vim/local_vimrc"]
+	path = .vim/local_vimrc
+	url = https://github.com/LucHermitte/local_vimrc.git

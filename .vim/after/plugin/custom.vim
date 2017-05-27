@@ -1,2 +1,3 @@
 " Lights
 Dark
+set nocindent
