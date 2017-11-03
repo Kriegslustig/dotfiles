@@ -1,3 +1,6 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -143,7 +146,7 @@ sbb () {
 }
 
 npmi () {
-  local packagename=$(echo ${@} | sed -E 's/(\ \-+[a-zA-Z0-9]+| )//g')
+  local packagename=$(echo ${@} | sed -E 's/.* ([a-zA-Z0-9\-]+)$/\1/g')
   local opt
   npm info ${packagename} | less
   echo "Is it the right package? (y/n)"

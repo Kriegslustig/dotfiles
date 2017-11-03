@@ -66,6 +66,8 @@ set number
 " Bells
 set novisualbell
 
+set colorcolumn=80
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Pugin specific
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -73,12 +75,19 @@ let g:javascript_plugin_jsdoc = 1
 
 " Disable flow by default
 let g:flow#enable = 0
+nmap <leader>f :FlowType<cr>
 
 " expand_region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 let g:deoplete#enable_at_startup = 1
+
+let g:ale_linters = { 'javascript': ['eslint'], }
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_signs = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key maps
@@ -235,48 +244,6 @@ highlight SpellBad ctermbg=88
 highlight Search ctermbg=240
 highlight Search ctermbg=242
 highlight SpellLocal ctermbg=NONE ctermfg=248
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_enable_highlighting = 1
-" Disable annotations next to column numbers (slow)
-let g:syntastic_enable_signs = 0
-let g:syntastic_cursor_columns = 0
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
-
-let g:airline#extensions#syntastic#enabled = 0
-
-" Local linter sypport
-let g:syntastic_javascript_checkers = []
-
-function! CheckJavaScriptLinter(filepath, linter)
-  if exists('b:syntastic_checkers')
-    return
-  endif
-  if filereadable(a:filepath)
-    let b:syntastic_checkers = [a:linter]
-    let {'b:syntastic_' . a:linter . '_exec'} = a:filepath
-  endif
-endfunction
-
-function! SetupJavaScriptLinter()
-  let l:current_folder = expand('%:p:h')
-  let l:bin_folder = fnamemodify(syntastic#util#findFileInParent('package.json', l:current_folder), ':h')
-  let l:bin_folder = l:bin_folder . '/node_modules/.bin/'
-  call CheckJavaScriptLinter(l:bin_folder . 'standard', 'standard')
-  call CheckJavaScriptLinter(l:bin_folder . 'eslint', 'eslint')
-endfunction
-
-autocmd FileType javascript call SetupJavaScriptLinter()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
