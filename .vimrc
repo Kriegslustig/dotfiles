@@ -1,3 +1,45 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NeoBundle Stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" NeoBundles
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'w0rp/ale'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'robertmeta/nofrils'
+NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'flowtype/vim-flow'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'vimoutliner/vimoutliner'
+
+call neobundle#end()
+
+NeoBundleCheck
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basics
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set shell=/bin/bash
 let g:python_host_skip_check = 1
 
