@@ -4,9 +4,6 @@ export LANG=en_US.UTF-8
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
-export VIM=/usr/local/bin/nvim
-export VIMRUNTIME=/usr/local/share/nvim/runtime
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -177,7 +174,7 @@ fi
 eval "$(jump shell zsh)"
 
 merge-branch () {
-  git merge --no-ff ${1} && \
+  git merge --no-ff --no-edit ${1} && \
   git push && \
   git branch -d ${1} && \
   git push --delete origin ${1}
@@ -192,3 +189,8 @@ open-node-project () {
 }
 
 alias prettyJson=node -e 'process.stdin.on("data", (d) => console.log(JSON.stringify(JSON.parse(d.toString()), null, "  ")))'
+
+export FZF_DEFAULT_COMMAND='fd --type f'
+
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;3D" backward-word

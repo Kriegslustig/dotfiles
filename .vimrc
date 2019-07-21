@@ -21,16 +21,33 @@ NeoBundle 'w0rp/ale'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'robertmeta/nofrils'
-NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'flowtype/vim-flow'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
 NeoBundle 'vimoutliner/vimoutliner'
+
+NeoBundle 'LucHermitte/lh-vim-lib'
+NeoBundle 'LucHermitte/local_vimrc'
+
+NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'aklt/plantuml-syntax'
+
+NeoBundle 'MarcWeber/vim-addon-mw-utils'
+NeoBundle 'tomtom/tlib_vim'
+NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'vim-scripts/TaskList.vim'
+NeoBundle 'junegunn/fzf'
+NeoBundle 'MattesGroeger/vim-bookmarks'
+
+NeoBundleLazy 'flowtype/vim-flow', {
+\ 'autoload': {
+\     'filetypes': 'javascript'
+\ }}
 
 call neobundle#end()
 
@@ -39,6 +56,8 @@ NeoBundleCheck
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basics
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set clipboard+=unnamed
 
 set shell=/bin/bash
 let g:python_host_skip_check = 1
@@ -53,8 +72,6 @@ set history=700
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
-
-execute pathogen#infect()
 
 command! -nargs=* Wrap set wrap linebreak nolist
 
@@ -74,7 +91,6 @@ set colorcolumn=80
 let g:javascript_plugin_jsdoc = 1
 
 " Disable flow by default
-let g:flow#enable = 0
 nmap <leader>f :FlowType<cr>
 
 " expand_region
@@ -83,11 +99,25 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 let g:deoplete#enable_at_startup = 1
 
-let g:ale_linters = { 'javascript': ['eslint'], }
+let g:ale_fixers = {
+\  'typescript': ['prettier', 'eslint'],
+\  'javascript': ['prettier', 'eslint'],
+\  'css': ['stylelint'],
+\}
+let g:ale_fix_on_save = 0
+
+let g:ale_linters = {
+\  'javascript': ['eslint', 'flow'],
+\  'typescript': ['tsserver', 'eslint'],
+\}
 let g:airline#extensions#ale#enabled = 1
-let g:ale_set_signs = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+
+" Snipmate
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['typescript'] = 'typescript,javascript'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key maps
@@ -100,9 +130,22 @@ let g:mapleader = "\<Space>"
 
 let g:ctrlp_map = '<leader>l'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = 'fd --type f'
+
+" vim-bookmarks
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_auto_save = 1
+let g:bookmark_location_list = 1
+let g:bookmark_disable_ctrlp = 1
+nmap <leader><leader> <Plug>BookmarkToggle
+nmap <leader>i <Plug>BookmarkAnnotate
+nmap <leader>a <Plug>BookmarkShowAll
+nmap <leader>; <Plug>BookmarkNext
+nmap <leader>, <Plug>BookmarkPrev
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>W :wa<cr>
+nmap <leader>w :call MkdirAndWrite()<cr>
 nmap <leader>q :wq<cr>
 inoremap jk <ESC>
 inoremap Jk <ESC>
@@ -115,11 +158,11 @@ map <leader>p :bp<cr>
 nnoremap <C-j> 10gj
 nnoremap <C-k> 10gk
 
-map <leader>e :e<Space>
+nmap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nmap <leader>p :split <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>s :vsp<cr>
 
-" dash lookup
-nmap <leader>d :Dash<cr>
+nnoremap <esc>^[ <esc>^[
 
 " Replace word with buffer
 map <leader>r "_dw"*P
@@ -130,8 +173,6 @@ nmap <C-t>p :tabp<cr>
 
 noremap <Space> :
 noremap / /\v
-
-nnoremap <esc> :noh<return><esc>
 
 " Moving whole blocks and lines around using dragvisuals.vim
 vmap <expr> <Left> DVB_Drag('Left')
@@ -144,6 +185,16 @@ nmap <leader>j :CtrlPBuffer<cr>
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" diffing
+if &diff
+  map <leader>1 :diffget LOCAL<CR>
+  map <leader>2 :diffget BASE<CR>
+  map <leader>3 :diffget REMOTE<CR>
+endif
+
+" ALE
+nmap <leader>f :ALEFix<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -221,6 +272,7 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 1
 
 au BufNewFile,BufRead *.tag setlocal ft=html
+au BufNewFile,BufRead *.ts setlocal ft=typescript
 
 command! Lights call Lights()
 function! Lights ()
@@ -281,15 +333,6 @@ au BufRead,BufNewFile *.otl set listchars=tab:\ \
 set list
 set sbr=…
 
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -332,6 +375,17 @@ map <leader>u :call Fsucks()<cr><cr>
 fu! Fsucks ()
   w!
   execute("!~/Software/nodejs/fsucks/index.js put ".bufname(''))
+endfunction
+
+command! Mkdir call Mkdir()
+function! Mkdir()
+  let l:dirname = system("dirname " . expand("%:p"))
+  call system("mkdir -p " . l:dirname)
+endfunction
+
+function! MkdirAndWrite()
+  call Mkdir()
+  execute("w!")
 endfunction
 
 command! Present call Present()
